@@ -1,0 +1,74 @@
+TITLE:: SentireProximityDetectionInterface
+summary:: An interface to define a possible proximity detection mechanisms in Sentire
+categories:: Sentire
+related:: Classes/SentireSignalProcessing, Classes/Sentire, Classes/SentireSignalFlow
+
+
+DESCRIPTION::
+The proximity detection classes receive a link::Classes/SentireSignal:: and calculates the proximity based on the signal values. Classes inheriting this interface should implement the method prInitProximity which defines the attribute proximity as a proxy outputing the current detected proximity value. The proximity attribute usually uses one or more sensors and are processed by link::Classes/SentireSignalProcessing:: class to detect the current proximity value.
+
+CLASSMETHODS::
+
+METHOD:: new
+Creates a new Proximity Detection object
+
+ARGUMENT:: server
+Audio server
+
+ARGUMENT:: numChannels
+Number of channels
+
+ARGUMENT:: thresholdTouch
+If the calculated proximity value is above this, triggers the touch signal.
+
+ARGUMENT:: thresholdLow
+Lower bound for the input signal, values below this will be clipped / ignored.
+
+ARGUMENT:: thresholdHigh
+Higher bound for the input signal, values above this will be clipped / ignored.
+
+ARGUMENT:: signalSplitValue
+Value where the signal starts to behave more expontial
+
+ARGUMENT:: signalSplitProportion
+Proportion in the physical space where the signal changes to exponential
+
+ARGUMENT:: signalScale
+To be used together with the SentireEnvelope, scaling the signal.
+
+ARGUMENT:: signalFrequencies
+Value used to determined the main frequency of the control signal.
+
+
+INSTANCEMETHODS::
+
+METHOD:: initChild
+Initializes the proximity detection object
+
+ARGUMENT:: thresholdTouch
+If the calculated proximity value is above this, triggers the touch signal.
+
+ARGUMENT:: thresholdLow
+Lower bound for the input signal, values below this will be clipped / ignored.
+
+ARGUMENT:: thresholdHigh
+Higher bound for the input signal, values above this will be clipped / ignored.
+
+ARGUMENT:: signalSplitValue
+Value where the signal starts to behave more expontial
+
+ARGUMENT:: signalSplitProportion
+Proportion in the physical space where the signal changes to exponential
+
+ARGUMENT:: signalScale
+To be used together with the SentireEnvelope, scaling the signal.
+
+ARGUMENT:: signalFrequencies
+Value used to determined the main frequency of the control signal.
+
+METHOD:: proximity
+A link::Classes/NodeProxy:: outputing the current detected proximity.
+
+METHOD:: touch
+A link::Classes/NodeProxy:: that triggers when the signal is above the touch threshold.
+

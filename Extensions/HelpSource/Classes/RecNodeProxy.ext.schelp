@@ -1,0 +1,15 @@
+INSTANCEMETHODS::
+
+subsection:: Extensions by Sentire
+
+method:: openWithCallback
+Same as open() but the calls a function after the buffers are ready
+
+method:: recordNoSchedWithCallback
+Starts recording and calls a function when it actually starts recording, or after the messages have been sent to the server.
+
+argument:: paused
+if paused is false start recording immediately.
+
+argument:: callback
+Function to be called when ready

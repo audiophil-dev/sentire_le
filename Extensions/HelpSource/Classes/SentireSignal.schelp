@@ -1,0 +1,31 @@
+TITLE:: SentireSignal
+summary:: Abstraction of Sentire's sensors signal mechanism
+categories:: Sentire
+related:: Classes/SentireSignalProcessing, Classes/Sentire, Classes/SentireSignalFlow
+
+
+DESCRIPTION::
+In link::Classes/Sentire:: the Signal needs two proxies: one for output and one for the input. This class handles those proxies and implements the basic functions so that it can be used in the link::Classes/SentireSignalFlow::
+
+CLASSMETHODS::
+
+METHOD:: new
+Creates a new SentireSignal
+
+ARGUMENT:: server
+
+ARGUMENT:: inputChannel
+The input bus, usually the hardware channel where the sensor is connected to
+
+ARGUMENT:: outputChannel
+The output bus, where to play the sensor signal to the hardware
+
+INSTANCEMETHODS::
+
+METHOD:: server
+
+METHOD:: inputChannel
+The input bus, usually the hardware channel where the sensor is connected to
+
+METHOD:: outputChannel
+The output bus, where to play the sensor signal to the hardware

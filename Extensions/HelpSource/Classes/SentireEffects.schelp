@@ -1,0 +1,12 @@
+TITLE:: SentireEffects
+summary:: Encapsulates a ProxyChain with previously defined effects for Sentire
+categories:: Sentire
+related:: Classes/SentireSoundEnvironment, Classes/Sentire, Classes/SentireSignalFlow
+
+DESCRIPTION::
+The SentireEffects class simply provides an abstraction to use an effects chain (with ProxyChain) inside the link::Classes/SentireSignalFlow::.
+
+INSTANCEMETHODS::
+
+METHOD:: knownSpecs
+All known Specs. Here to help build interfaces for this effects chain.

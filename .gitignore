@@ -1,0 +1,10 @@
+*.DS_Store
+*.avi
+*.swp
+Recordings/*
+Recordings/OSC/*
+Recordings/Audio/*
+Recordings/Video/*
+notes.txt
+Config/local_config.scd
+Samples/*

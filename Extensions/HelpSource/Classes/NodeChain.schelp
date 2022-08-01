@@ -1,0 +1,114 @@
+TITLE:: NodeChain
+summary:: Class for chaining different NodeProxy objects and keeping execution order in the server.
+categories:: Sentire
+related:: Classes/NodeProxy, Classes/ProxyChain, Classes/SentireSignalFlow
+
+
+DESCRIPTION::
+manages proxies in a chain, keeping the order and the signal flow between then. Like a ProxyChain but for proxies.
+
+First code examples:
+
+code::
+// check the server node tree
+s.plotTree;
+
+a = NodeProxy.audio(s, 2);
+b = NodeProxy.audio(s, 2);
+c = NodeProxy.audio(s, 2);
+
+// add sound functions to the nodes
+a.source = {BPF.ar(\in.ar(0!2), LFSaw.ar(1).exprange(20, 20000))};
+b.source = {\in.ar(0!2) + SinOsc.ar(123) };
+c.source = {\in.ar(0!2) + LFPulse.ar(123, 0, 0.5, SinOsc.kr(0.2))};
+
+// now lets create the chain as c -> b -> a:
+h = NodeChain(\aChain);
+h.addAfter(\c, c);
+h.addAfter(\b, b);
+h.addAfter(\a, a);
+
+// We can scope at any step by
+b.scope;
+
+// Or scope the output of the chain
+h.scope;
+
+// and change the order on the fly:
+h.addBefore(\a, a, before: \b);
+
+// remove a node
+h.remove(\a);
+
+::
+
+CLASSMETHODS::
+
+METHOD:: new
+create a new NodeChain object with
+
+argument:: server
+the server
+
+argument:: numChannels
+number of channels for this chain
+
+
+INSTANCEMETHODS::
+
+METHOD:: addAfter
+add a NodeProxy to the chain under a specific key
+argument:: key
+symbol to identify this NodeProxy in the chain
+
+argument:: proxy
+the NodeProxy object
+
+argument:: after
+symbol to identify after which NodeProxy in the chain this one should be added, if *nil* then the proxy is added to the end of the chain
+
+METHOD:: addBefore
+add a NodeProxy to the chain under a specific key
+argument:: key
+symbol to identify this NodeProxy in the chain
+
+argument:: proxy
+the NodeProxy object
+
+argument:: before
+symbol to identify before which NodeProxy in the chain this one should be added, if *nil* then the proxy is added to the beginning of the chain
+
+METHOD:: remove
+removes a node from the chain
+
+argument:: key
+the symbol used to identify which node should be removed
+
+METHOD:: replace
+replaces a node in the chain
+
+argument:: key
+the symbol used to identify which node should be replaced
+
+argument:: proxy
+the NodeProxy to replace with
+
+METHOD:: get
+get node in the chain identified by the key.
+
+argument:: key
+symbol of the node to get.
+
+METHOD:: clear
+clears the NodeChain, clearing also the routing between NodeProxy's inputs
+
+METHOD:: proxy
+the reference to the NodeProxy (output) of the chain
+
+copymethod:: NodeProxy -play
+
+copymethod:: NodeProxy -playN
+
+copymethod:: NodeProxy -stop
+
+copymethod:: Bus -scope

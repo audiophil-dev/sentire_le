@@ -1,0 +1,128 @@
+TITLE:: SentireSoundEnvironment
+summary:: An abstraction of a Sound Environment.
+categories:: Sentire
+related:: Classes/SentireEnvelope, Classes/SentireSignalFlow, Classes/SentireSignal, Classes/SentireSignalProcessing
+
+DESCRIPTION::
+A Sound Environment consists of two sound definitions: a continuous sound and a touch sound. A SentireSoundEnvironment expects a SentireSignalProcessing to be routed to it (usually via the SentireSignalFlow class). The signal is then routed and mapped accordingly to the mapping definitions of the sound environment.
+
+CLASSMETHODS::
+
+METHOD:: new
+Registers a new sound environment.
+
+ARGUMENT:: key
+The symbol to identify this instance
+
+ARGUMENT:: source
+The signal function used for the continuous sound. The mapped values can be used in this function as controls (see examples).
+
+ARGUMENT:: touchSource
+The signal function used for the touch sound. The mapped values can be used in this function as controls (see examples).
+
+ARGUMENT:: mapping
+An IdentityDictionary of different mappings (usually SentireEnvelope but any signal function can be used, see examples).
+
+ARGUMENT:: server
+The server
+
+ARGUMENT:: numChannels
+
+METHOD:: all
+An IdentityDictionary with references to all registered sound environments.
+
+METHOD:: default
+A silent sound environment
+
+INSTANCEMETHODS::
+
+Most methods behave as in NodeProxy.
+
+METHOD::run
+By default SentireSoundEnvironment won't run automatically (to avoid CPU waste) so you need to explicitly call this method to start it.
+
+METHOD:: end
+Stops processing the inner proxies
+
+METHOD:: clear
+Clears all internal proxies
+
+METHOD:: key
+returns:: The symbol that identify this instance
+
+METHOD::mappingScale
+Sets all the SentireEnvelope mappings accordingly to the range scale.
+
+METHOD:: source
+Sets the signal function used for the continuous sound.
+
+METHOD:: touchSource
+Sets signal function used for the touch sound.
+
+METHOD:: mapping
+Sets the mappings IdentityDictionary.
+
+METHOD:: server
+The server
+
+METHOD::nodeOrder
+Returns an ordered list with the mapping nodes before the sound nodes.
+
+METHOD::<<>
+Routes a link::Classes/SentireSignalProcessing:: through the mappings to generate and manipulate the continuous and touch sounds.
+
+copymethod:: NodeProxy -orderNodes
+
+EXAMPLES::
+
+code::
+(
+q = q ? ();
+
+s.waitForBoot {
+	var scale = Scale.majorPentatonic.degreeToFreq(Scale.majorPentatonic.degrees, 53.midicps, 0);
+
+	SentireSoundEnvironment(\touchSin,
+		source: {
+			RLPF.ar(
+				SinOscFB.ar(\freq.ar(scale[0]), 0.5),
+				\proximity.ar(0),
+				0.4
+			) * \amplitude.ar(0)!2;
+		},
+
+		touchSource: {
+			var sig, freq;
+
+			freq = \freq.ar(scale[0]);
+			sig = SinOsc.ar(freq*[1,1.06], 0, 0.25);
+			sig;
+		},
+
+		mapping: (
+			proximity: SentireEnvelope([0.2,0.8], [100, 1200, 2900, 20], [\exp, \exp, \exp]),
+			amplitude: SentireEnvelope([0.3,0.7], [0.0, 0.5, 0.0, 0.2], [\lin, \lin, \lin]),
+			freq: {
+				var freq = Demand.ar(
+					\touch.ar(1), 0,
+					Dseq([Dxrand(scale,3)] ++
+						[Dstutter(Drand([1,2,3], 1), Drand(scale, 1))], inf));
+
+				// Demand returns 0 until the first trig, so we set
+				// scale[0] as default until first trig.
+				Select.ar(freq > 1.0, [K2A.ar(scale[0]), freq]);
+			},
+		),
+	);
+};
+);
+
+// Mock an input signal
+q.signal = SentireSignalProcessing.new;
+q.signal.proxy.source = {K2A.ar(MouseX.kr(0,1))};
+
+SentireSoundEnvironment(\touchSin).run;
+SentireSoundEnvironment(\touchSin) <<> q.signal;
+SentireSoundEnvironment(\touchSin).scope;
+SentireSoundEnvironment(\touchSin).play;
+::

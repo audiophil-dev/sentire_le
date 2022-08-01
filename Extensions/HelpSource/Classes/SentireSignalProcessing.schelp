@@ -1,0 +1,62 @@
+TITLE:: SentireSignalProcessing
+summary:: Abstraction of Sentire's signal processing, where the proximity detection happens.
+categories:: Sentire
+related:: Classes/SentireSignalProcessing, Classes/Sentire, Classes/SentireSignalFlow
+
+
+DESCRIPTION::
+Receives a link::Classes/SentireSignal:: and calculates the proximity based on its values.
+
+CLASSMETHODS::
+
+METHOD:: new
+Creates a new SentireSignalProcessing
+
+ARGUMENT:: thresholdTouch
+If the calculated proximity value is above this, triggers the touch signal.
+
+ARGUMENT:: thresholdLow
+Lower bound for the input signal, values below this will be clipped / ignored.
+
+ARGUMENT:: thresholdHigh
+Higher bound for the input signal, values above this will be clipped / ignored.
+
+ARGUMENT:: signalSplitValue
+Value where the signal starts to behave more expontial
+
+ARGUMENT:: signalSplitProportion
+Proportion in the physical space where the signal changes to exponential
+
+ARGUMENT:: signalScale
+To be used together with the SentireEnvelope, scaling the signal.
+
+ARGUMENT:: server
+
+
+INSTANCEMETHODS::
+
+METHOD:: setSignalFunction
+Resets the signal processing function to the default one.
+
+METHOD:: thresholdTouch
+If the calculated proximity value is above this, triggers the touch signal.
+
+METHOD:: thresholdLow
+Lower bound for the input signal, values below this will be clipped / ignored.
+
+METHOD:: thresholdHigh
+Higher bound for the input signal, values above this will be clipped / ignored.
+
+METHOD:: signalSplitValue
+Value where the signal starts to behave more expontial
+
+METHOD:: signalSplitProportion
+Proportion in the physical space where the signal changes to exponential
+
+METHOD:: signalScale
+To be used together with the SentireEnvelope, scaling the signal.
+
+METHOD:: touch
+A link::Classes/NodeProxy:: that triggers when the signal is above the touch threshold.
+
+
