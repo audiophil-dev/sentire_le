@@ -1,0 +1,42 @@
+TITLE:: SentireWiredProximityDetection
+summary:: Wired proximity detection for Sentire
+categories:: Sentire
+related:: Classes/SentireSignalProcessing, Classes/Sentire, Classes/SentireSignalFlow
+
+
+DESCRIPTION::
+Sentire wired proximity detection is mostly done by link::Classes/SentireSignalProcessing::, this class encapsulates the signal processing in its proximity attribute.
+
+See the parent class link::Classes/SentireProximityDetectionInterface:: for more details on certain methods.
+
+INSTANCEMETHODS::
+
+METHOD:: proximity
+A link::Classes/SentireSignalProcessing::.
+
+METHOD:: thresholdTouch
+ARGUMENT:: value
+If the calculated proximity value is above this, triggers the touch signal.
+
+METHOD:: thresholdLow
+ARGUMENT:: value
+Lower bound for the input signal, values below this will be clipped / ignored.
+
+METHOD:: thresholdHigh
+ARGUMENT:: value
+Higher bound for the input signal, values above this will be clipped / ignored.
+
+METHOD:: signalSplitValue
+ARGUMENT:: value
+Value where the signal starts to behave more expontial
+
+METHOD:: signalSplitProportion
+ARGUMENT:: value
+Proportion in the physical space where the signal changes to exponential
+
+METHOD:: signalScale
+ARGUMENT:: value
+To be used together with the SentireEnvelope, scaling the signal.
+
+METHOD:: sensorProcessing
+Returns:: The link::Classes/SentireSignalProcessing:: which is used for calculating the proximity

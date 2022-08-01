@@ -1,0 +1,38 @@
+TITLE:: Sentire
+summary:: Sentire main class and controller
+categories:: Sentire
+related:: Classes/SentireSoundEnvironment, Classes/SentireSignalFlow
+
+DESCRIPTION::
+Sentire class is the main controller for using the Sentire project. The Sentire class reads a configuration dictionary and create the necessary objects accordingly.
+
+CLASSMETHODS::
+
+METHOD:: new
+create a new Sentire object
+
+ARGUMENT:: config
+an IdentityDictionary with the configuration.
+
+INSTANCEMETHODS::
+
+METHOD:: clear
+Clears all internal proxies and objects
+
+METHOD:: play
+Plays (monitor) the sound to the configured outputs.
+
+METHOD:: stop
+Stops monitoring
+
+METHOD:: rangeScale
+Sets the range or scale for the envelopes used by the current sound environment
+
+METHOD:: signalFlow
+returns:: The link::Classes/SentireSignalFlow:: used by this Sentire object
+
+METHOD:: soundEnvironmentSelector
+returns:: The link::Classes/SentireSoundEnvironmentSelector:: used by this Sentire object
+
+METHOD:: master
+returns:: A link::Classes/SentireMaster::

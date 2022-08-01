@@ -1,0 +1,45 @@
+TITLE:: SentireProxyInterface
+summary:: An interface for implementing common methods when encapsulating a NodeProxy object
+categories:: Sentire
+
+DESCRIPTION::
+SentireProxyInterface encapsulates a link::Classes/NodeProxy:: and implements some of its methods, this is done so one can create other objects that behave like a link::Classes/NodeProxy:: without the need to inherit from link::Classes/NodeProxy::, by basically implementing a Duck Typing pattern.
+
+INSTANCEMETHODS::
+
+All methods are delegated to the internal NodeProxy instance.
+
+METHOD:: proxy
+A reference to the NodeProxy instance
+
+copymethod:: NodeProxy -<<>
+
+copymethod:: NodeProxy -ar
+
+copymethod:: NodeProxy -clear
+
+copymethod:: NodeProxy -end
+
+copymethod:: NodeProxy -group
+
+copymethod:: BusPlug -initBus
+
+copymethod:: NodeProxy -mold
+
+copymethod:: Node -nodeID
+
+copymethod:: Bus -numChannels
+
+copymethod:: NodeProxy -orderNodes
+
+copymethod:: NodeProxy -play
+
+copymethod:: NodeProxy -rate
+
+copymethod:: Bus -scope
+
+copymethod:: NodeProxy -server
+
+EXAMPLES::
+
+See: link::Classes/SentireSignal::, link::Classes/SentireSignalProcessing:: or link::Classes/SentireEffects::.

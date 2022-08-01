@@ -1,0 +1,67 @@
+TITLE:: SentireEnvelope
+summary:: an abstraction of sentire envelope, mostly used by SentireSoundEnvironments
+categories:: Sentire
+related:: Classes/SentireSoundEnvironment, Classes/Sentire, Classes/SentireSignalFlow
+
+DESCRIPTION::
+A SentireEnvelope is defined by a range in the middle and 4 values.
+
+The envelope can be scaled by the scale attribute and ranges can be flex (meaning that they adapt to the scaling) or fixed, meaning that they don't change the value when scaled.
+
+CLASSMETHODS::
+
+METHOD:: new
+create a new SenireEnvelope object
+
+ARGUMENT:: middleRange
+an array with two elements which are values for the curve's middle range. Values should be between 0 and 1.
+
+ARGUMENT:: values
+an array with values for each point of the curve. In total you have 4 values, one for each point defining the middle range plus one for the beginning of the envelope and one for the end.
+
+ARGUMENT:: curves
+an array with three elements representing the curves for each segment of the envelope.
+
+ARGUMENT:: scale
+scale value
+
+ARGUMENT:: flex
+a array with two symbols representing if the first and the last should be flex (\flex)) or not (nil) (not flex by default).
+
+ARGUMENT:: server
+server instance
+
+INSTANCEMETHODS::
+
+METHOD:: asNodeProxy
+initializes and returns a NodeProxy that applies the curve defined by this envelope.
+returns:: a NodeProxy
+
+copymethod:: Warp -map
+
+METHOD:: plot
+plots the shape of the envelope
+
+METHOD:: scale
+sets the scaling. should be a value between 0 and 1. This causes the NodeProxy to be updated accordingly.
+
+METHOD:: clear
+clears the NodeProxy created by this envelope.
+
+METHOD:: end
+Stops processing the internal NodeProxy
+
+EXAMPLES::
+
+code::
+e = SentireEnvelope([0.2,0.8], [100, 1200, 2900, 20], [\exp, \exp, \exp])
+e.plot;
+
+Ndef(\sin, { SinOsc.ar(\in.ar(0)) }).play;
+Ndef(\saw, { LFSaw.ar(0.2).range(0,1) });
+
+Ndef(\sin) <<> e.asNodeProxy <<> Ndef(\saw);
+
+e.scale = 0.6
+e.plot;
+::

@@ -1,0 +1,60 @@
+TITLE:: SentireAbstractGui
+summary:: Abstract Gui Class far all Sentire Gui Classes
+categories:: Sentire
+related:: Classes/Sentire, Classes/View
+
+DESCRIPTION::
+The base class for all Sentire Gui elements. Classes which inherit from link::Classes/SentireAbstractGui:: should implement an update and a guiBody Method. The guiBody method creates all the Child Views while update is called whenever the model is changed and should update the link::Classes/View:: based on it's model.
+
+Each Sentire class specifies its Gui class via the link::Classes/Object#-guiClass:: method.
+
+The default guiClass for an Object is ObjectGui.
+
+The .gui method is called on your model:
+
+code::
+theModel.gui( parent, bounds )
+::
+
+Manages the model/gui dependencies and creates a window if the parent is nil.
+
+CLASSMETHODS::
+
+METHOD:: new
+create a SentireGui Object
+
+ARGUMENT:: model
+the object that the GUI is a graphical interface for.
+
+INSTANCEMETHODS::
+
+METHOD:: update
+when the model is changed and the .changed method is called then .update is called on all dependants including this gui object. Implement this function in your subclass to update the View based on it's model.
+
+METHOD:: model
+get the model or set a new model.
+
+ARGUMENT:: newModel
+the new model. This allows to use a single gui and dynamically swap in a different model of the same class. The old model releases the gui as a dependant, the new model adds the gui as a dependent and the view is updated.
+
+METHOD:: gui
+this method is called by the model and should not be called manually.
+
+METHOD:: viewDidClose
+is called when the parent view closes. It releases the dependants.
+
+METHOD:: guiBody
+set up all view for the GUI.  Implement this function in your subclass to create your GUI.
+
+METHOD:: guify
+create a Window if the parent is nil. Add a layout to the parant if the parents layout is nil and add the GUI's View to it.
+
+ARGUMENT:: parent
+the View's parent
+
+ARGUMENT:: bounds
+the bounds of the View as a link::Classes/Rect::
+
+code::
+
+::

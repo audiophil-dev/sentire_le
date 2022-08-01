@@ -1,0 +1,36 @@
+TITLE:: SentireMaster
+summary:: Simple class for setting Sentire's master volume
+categories:: Sentire
+related:: Classes/SentireMasterGui, Classes/Sentire, Classes/SentireSignalFlow
+
+DESCRIPTION::
+Simple class for setting Sentire's master volume. Notifies all dependants (e.g. a SentireMasterGui) when the volume is changed.
+
+CLASSMETHODS::
+
+METHOD:: new
+create a new SenireMaster object
+
+ARGUMENT:: signalFlow
+the link::Classes/SentireSignalFlow:: which's master node is controlled
+
+ARGUMENT:: outputChannels
+the channels to be monitored by SentireMaster's GUI
+
+
+INSTANCEMETHODS::
+
+METHOD:: outputChannels
+returns:: the channels to be monitored by link::Classes/SentireMasterGui::
+
+METHOD:: bus
+returns:: the bus which created for monitoring with link::Classes/SentireMasterGui::
+
+METHOD:: volume
+get or set the volume
+
+ARGUMENT:: amp
+the volume as amplitude value
+
+EXAMPLES::
+TODO: add a example based on minimal SentireSignalFlow example

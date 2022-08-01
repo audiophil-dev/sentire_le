@@ -1,0 +1,100 @@
+TITLE:: SentireSignalFlow
+summary:: Uses NodeChain to abstract the signal flow for Sentire
+categories:: Sentire
+related:: Classes/SentireSignal, Classes/SentireSignalProcessing, Classes/SentireSoundEnvironment, Classes/SentireEffects, Classes/NodeChain, Classes/SentireWiredProximityDetection
+
+DESCRIPTION::
+SentireSignalFlow uses link::Classes/NodeChain:: a chain containing known stages, each stage of the chain is represented by its own abstraction.
+
+CLASSMETHODS::
+
+METHOD:: new
+create a new SentireMaster object. By default will use the default settings for each of the stages of the chain.
+
+ARGUMENT:: server
+
+ARGUMENT:: rawSignal
+A link::Classes/SentireSignal::
+
+ARGUMENT:: proximityDetection
+A link::Classes/SentireProximityDetectionInterface::
+
+ARGUMENT:: soundEnvironment
+A link::Classes/SentireSoundEnvironment::
+
+ARGUMENT:: effects
+A link::Classes/SentireEffects::
+
+INSTANCEMETHODS::
+
+METHOD:: chain
+returns:: the NodeChain instance.
+
+METHOD:: rawSignal
+Sets the link::Classes/SentireSignal::
+
+METHOD:: proximityDetection
+Sets the link::Classes/SentireProximityDetectionInterface:::
+
+METHOD:: soundEnvironment
+Sets the link::Classes/SentireSoundEnvironment::
+
+METHOD:: effects
+Sets the link::Classes/SentireEffects::
+
+METHOD:: master
+returns:: The last NodeProxy in the chain, representing the Master. Can set a master volume.
+
+EXAMPLES::
+code::
+
+q = q ? ();
+
+(
+SentireSoundEnvironment(\sin,
+	source: {
+		SinOsc.ar(\proximity.ar(0)) * \amplitude.ar(0)!2;
+	},
+	mapping: (
+		proximity: SentireEnvelope([0.2,0.8], [100, 1200, 2900, 20], [\exp, \exp, \exp]),
+		amplitude: SentireEnvelope([0.3,0.7], [0.0, 1.0, 0.0, 0.8], [\lin, \lin, \lin])
+	),
+).run;
+
+SentireSoundEnvironment(\pulse,
+	source: {
+		LFPulse.ar(\proximity.ar(0)) * \amplitude.ar(1)!2;
+	},
+	mapping: (
+		proximity: SentireEnvelope([0.2,0.8], [100, 12200, 200, 20], [\exp, \exp, \exp]),
+		amplitude: SentireEnvelope([0.3,0.7], [0.0, 0.1, 1.0, 0.2], [\lin, \lin, -10])
+	),
+).run;
+)
+
+// WATCH OUT FOR HIGH PITCH FROM SentireSignal
+q.flow = SentireSignalFlow.new(soundEnvironment: SentireSoundEnvironment(\sin));
+
+// change output of transmitter signal
+s.meter;
+q.flow.rawSignal.outputChannel = 2;
+
+// check the scope
+q.flow.scope;
+
+// inspect the signal in other points
+q.flow.rawSignal.scope;
+q.flow.proximityDetection.scope;
+q.flow.soundEnvironment.scope;
+q.flow.effects.scope;
+q.flow.master.scope;
+
+// listen to the flow
+q.flow.play;
+
+// change the current soundEnvironment
+q.flow.soundEnvironment = SentireSoundEnvironment(\pulse);
+
+// change to sin again
+q.flow.soundEnvironment = SentireSoundEnvironment(\sin);
+::

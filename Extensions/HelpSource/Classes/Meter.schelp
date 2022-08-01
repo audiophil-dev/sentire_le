@@ -1,0 +1,61 @@
+TITLE:: Meter
+summary:: A graphical signal level meter (Peak RMS)
+categories:: Metering
+related:: Classes/LevelIndicator, Classes/SendPeakRMS, Classes/PeakFollower, Classes/ServerMeter
+
+DESCRIPTION::
+A Meter is a graphical display showing the signal level (Peak RMS) for a given bus on a server.
+
+CLASSMETHODS::
+
+METHOD:: new
+Creates a new Meter
+
+ARGUMENT:: parent
+The instance of View or Window that the Meter View will become a child of.
+
+ARGUMENT:: bounds
+A Rect or a Point describing size and position of the Meter View. If a Point is given, its coordinates will denote the view's size, while the view's position will be (0,0). Position is measured relative to the parent's top-left corner.
+
+ARGUMENT:: bus
+The bus which is metered
+
+ARGUMENT:: numChannels
+The number of channels to be metered from the bus, starting from Bus.index
+
+ARGUMENT:: server
+The server
+
+INSTANCEMETHODS::
+
+METHOD:: showTitle
+Enables or disables the title for the view
+
+ARGUMENT:: bool
+Boolean value, sets the visibility of the title
+
+METHOD:: id
+
+returns:: the id of the Meter
+
+METHOD:: start
+Starts the metering
+
+METHOD:: stop
+Stops the metering
+
+EXAMPLES::
+
+code::
+b = Bus(\audio, 0, 2);
+a = SynthDef(\testSignal, {
+	var sig = SinOsc.ar(500, 0, SinOsc.kr([0.25, 0.5] , 0, 0.5, 0.5));
+	Out.ar(b, sig);
+}).play;
+
+w = Window('Meter', [200, 200, 100, 200]);
+m = Meter(w, [0, 0, 100, 200], b, 2, s);
+w.front;
+m.stop;
+m.start;
+::
