@@ -26,7 +26,7 @@ Once you have successfully installed `SuperCollider`, you should either clone th
 
 In the following instructions replace `$yourSentireDirectory` with your local (just downloaded) sentire directory
 
-#### __Step 1: Copy Sentire Extensions__
+#### Step 1: Copy Sentire Extensions
 
 First you need to copy the folder `SentireExtensions` (`$yourSentireDirectory/Extensions`) to the `SuperCollider` Extensions folder.
 
@@ -38,13 +38,13 @@ On MacOs it should be located in
 
 ```~/Library/Application\ Support/SuperCollider/Extensions```
 
-#### __Step 2: Recompile SuperCollider Class Library__
+#### Step 2: Recompile SuperCollider Class Library
 
 In the SuperCollider IDE either navigate to `Language` and press `Recompile Class Library` or press `ctrl`+`shift`+`l` on Linux (on MacOs press `cmd`+`shift`+`l`).
 
 The Class Library should compile without any errors.
 
-#### __Step 3: Install JITLibExtensions
+#### Step 3: Install JITLibExtensions
 
 In SuperCollider execute
 
@@ -52,7 +52,7 @@ In SuperCollider execute
 
 and install the `JITLibExtensions`.
 
-#### __Step 4: Start Sentire
+#### Step 4: Start Sentire
 
 Open `main.scd` in `$yourSentireDirectory` and execute the whole code inside the brackets.
 
