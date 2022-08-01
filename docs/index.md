@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+# Documentation for the Sentire "light" Software (sentire-le)
 
 You can use the [editor on GitHub](https://github.com/audiophil-dev/sentire_le/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
