@@ -259,18 +259,17 @@ samp {
 
 pre {
   display: block;
-  margin-top: 0;
-  margin-bottom: 1rem;
   overflow: auto;
   font-size: 0.875em;
 }
 pre code {
+  margin: 2rem;
   font-size: inherit;
-  color: inherit;
   word-break: normal;
 }
 
 code {
+  padding: 0.5em;
   font-size: 0.875em;
   color: #d63384;
   word-wrap: break-word;
@@ -474,6 +473,16 @@ iframe {
   border: 0;
 }
 
+.embed-responsive .embed-responsive-item, .embed-responsive iframe, .embed-responsive embed, .embed-responsive object
+{
+bottom: 0;
+height: 100%;
+left: 0;
+top: 0;
+width: 100%;
+position: relative;
+}
+
 summary {
   display: list-item;
   cursor: pointer;
@@ -604,11 +613,12 @@ progress {
 }
 
 .img-thumbnail {
+  margin: 1rem;
   padding: 0.25rem;
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
-  max-width: 100%;
+  max-width: 20%;
   height: auto;
 }
 
@@ -4517,6 +4527,7 @@ textarea.form-control-lg {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  margin: 1rem;
 }
 .card > hr {
   margin-right: 0;
@@ -4664,13 +4675,17 @@ textarea.form-control-lg {
   }
 }
 
+.accordion {
+  margin-bottom: 3em;
+}
+
 .accordion-button {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   padding: 1rem 1.25rem;
-  font-size: 1rem;
+  font-size: 2rem;
   color: #212529;
   text-align: left;
   background-color: #fff;
