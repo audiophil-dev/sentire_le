@@ -37,10 +37,7 @@ function copyToClipboard(text, el) {
     }
   }
 
-  $(function(){
-    $("#header").load("header.html"); 
-    $("#footer").load("footer.html"); 
-  });
+
 
   $(document).ready(function() {
     // Initialize
@@ -58,5 +55,10 @@ function copyToClipboard(text, el) {
       var el = $(this);
       copyToClipboard(text, el);
     });
+
+    $(function(){
+        $("#header").load("header.html"); 
+        $("#footer").load("footer.html"); 
+      });
 
   });
