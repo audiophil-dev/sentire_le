@@ -7,10 +7,17 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Sentire</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="css/styles.css" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +31,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Get Started</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                 </ul>
@@ -35,26 +41,46 @@
     <div class="container px-4 px-lg-5">
         <!-- Heading Row-->
         <div class="row gx-4 gx-lg-5 align-items-center my-5">
-            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
-                    src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
+            <div class="col-lg-6"><img class="img-fluid rounded mb-4 mb-lg-0" src="assets/setup.svg" /></div>
             <div class="col-lg-5">
-                <h1 class="font-weight-light">Business Name or Tagline</h1>
-                <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it,
-                    but it makes a great use of the standard Bootstrap core components. Feel free to use this template
-                    for any project you want!</p>
-                <a class="btn btn-primary" href="#!">Get Started</a>
+                <h1 class="font-weight-light">Get Started <i class='fa fa-rocket'></i></h1>
+                <p class="lead">Learn how to install the the sentire software, set up a minimal sensor configuration and
+                    use a pre-defined sound environment for sonic interaction</p>
             </div>
         </div>
+
+        <!-- Disclaimer -->
+        <div class="alert alert-secondary" role="alert" style="font-size: larger;">
+            <p>Disclaimer: feel free to use these instructions and the sentire le software for your research, art
+                project or just for fun. If you do so, please cite the following paper in every publication (print or
+                digital) that references your work:
+            </p>
+        </div>
+
+        <div class="row-lg-5">
+            <div class="card" style="width: auto;">
+                <div class="card-body">
+                    <h5 class="card-title">Citation:</h5>
+                    <p class="card-text">
+                        Staudt, P., Kogge, A., Lussana, M., Rizzonelli, M., Stahl, B., & Kim, J. H. (2022). A New Sensor
+                        Technology for the Sonification Of Proximity and Touch in Closed-Loop Auditory Interaction.
+                        Proceedings of the 19th Sound and Music Computing Conference, 441–448.
+                        https://doi.org/10.5281/zenodo.6573488</p>
+                    <a href="https://doi.org/10.5281/zenodo.6573488" target="_blank" class="btn btn-primary">Publication</a>
+                </div>
+            </div>
+        </div>
+
         <!-- Accordion-->
-        <div class="accordion" id="accordionExample">
+        <div class="accordion" id="accordionInstruction">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="Installation">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Installation
+                        <i class="bi-box-arrow-down" style="padding-right: 1rem"></i> Installation
                     </button>
                 </h2>
-                
+
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="Installation"
                     data-bs-parent="#accordionExample">
                     <!-- Accordion Body-->
@@ -76,14 +102,14 @@
                                     <p>Once you have successfully installed <code>SuperCollider</code>, you can either
                                         clone the sentire repository or download the latest release (TODO: add link) and
                                         unzip it on your computer:</p>
-                                    
+
                                 </div>
 
                                 <div class="row">
                                     <div class="card text-center" style="width: auto;">
                                         <div class="card-body">
 
-                                            <i class='fab fa-github' style='font-size:50px; margin: 1rem'></i>
+                                            <i class='fa fa-github' style='font-size:50px; margin: 1rem'></i>
                                             <h5 class="card-title">Clone repository</h5>
                                             <p class="card-text">
                                                 <Code>git clone https://github.com/audiophil-dev/sentire_le.git</Code>
@@ -106,7 +132,7 @@
 
                                     <div class="card text-center" style="width: auto;">
                                         <div class="card-body">
-                                            <i class='fas fa-download' style='font-size:50px; margin: 1rem'></i>
+                                            <i class='fa fa-download' style='font-size:50px; margin: 1rem'></i>
 
                                             <h5 class="card-title">Download Zip Package</h5>
 
@@ -116,19 +142,21 @@
                                     </div>
                                 </div>
 
-                                In the following steps replace <code>$yourSentireDirectory</code> with your local (just downloaded) sentire directory
+                                In the following steps replace <code>$yourSentireDirectory</code> with your local (just
+                                downloaded) sentire directory
 
 
                             </div>
                             <div class="p-2 bg-light border">
                                 <h3>Step 2: Copy Extensions</h3>
 
-                                First you need to copy the folder <code>SentireExtensions</code> from <code>$yourSentireDirectory</code> to the SuperCollider extensions folder:
+                                First you need to copy the folder <code>SentireExtensions</code> from
+                                <code>$yourSentireDirectory</code> to the SuperCollider extensions folder:
 
                                 <div class="row">
                                     <div class="card text-center" style="width: auto;">
                                         <div class="card-body">
-                                            <i class='fab fa-apple' style='font-size:50px; margin: 1rem'></i>
+                                            <i class='fa fa-apple' style='font-size:50px; margin: 1rem'></i>
                                             <h5 class="card-title">Mac</h5>
                                             <p class="card-text">
                                                 <Code>~/Library/Application\ Support/SuperCollider/Extensions</Code>
@@ -138,7 +166,7 @@
 
                                     <div class="card text-center" style="width: auto;">
                                         <div class="card-body">
-                                            <i class='fab fa-linux' style='font-size:50px; margin: 1rem'></i>
+                                            <i class='fa fa-linux' style='font-size:50px; margin: 1rem'></i>
                                             <h5 class="card-title">Linux</h5>
                                             <p class="card-text">
                                                 <Code>~/Library/Application\ Support/SuperCollider/Extensions</Code>
@@ -154,7 +182,7 @@
                                 <div class="row">
                                     <div class="card text-center" style="width: auto;">
                                         <div class="card-body">
-                                            <i class='fab fa-apple' style='font-size:50px; margin: 1rem'></i>
+                                            <i class='fa fa-apple' style='font-size:50px; margin: 1rem'></i>
                                             <h5 class="card-title">Mac</h5>
                                             <p class="card-text">
                                                 <kbd>Cmd+Shift+L</kbd>
@@ -164,7 +192,7 @@
 
                                     <div class="card text-center" style="width: auto;">
                                         <div class="card-body">
-                                            <i class='fab fa-linux' style='font-size:50px; margin: 1rem'></i>
+                                            <i class='fa fa-linux' style='font-size:50px; margin: 1rem'></i>
                                             <h5 class="card-title">Linux</h5>
                                             <p class="card-text">
                                                 <kbd>Ctrl+Shift+L</kbd>
@@ -173,7 +201,8 @@
                                 </div>
 
                                 <p>
-                                Use the shortcuts or in the SuperCollider IDE: <span class="badge bg-secondary">Language->Recompile Class Library</span>
+                                    Use the shortcuts or in the SuperCollider IDE: <span
+                                        class="badge bg-secondary">Language->Recompile Class Library</span>
                                 </p>
 
                                 <div class="alert alert-primary" role="alert">
@@ -185,32 +214,40 @@
                             <div class="p-2 bg-light border">
                                 <h3>Step 4: Install JITLibExtensions</h3>
 
-                                Sentire needs <i>JITLibExtensions</i>. In order to install it from within SuperCollider, execute:
-                                
+                                Sentire needs <i>JITLibExtensions</i>. In order to install it from within SuperCollider,
+                                execute:
+
                                 <pre><code>Quarks.gui();</code></pre>
 
                                 and install the JITLibExtensions
-                                
+
                             </div>
 
                             <!--Step 5-->
                             <div class="p-2 bg-light border">
                                 <h3>Step 5: Start Sentire</h3>
                                 <p>
-                                Open <span class="badge bg-primary">main.scd</span> in <code>$yourSentireDirectory</code> and execute the whole code inside the brackets.
+                                    Open <span class="badge bg-primary">main.scd</span> in
+                                    <code>$yourSentireDirectory</code> and execute the whole code inside the brackets.
                                 </p>
                                 A Window named "Sentire" should open, and no errors should be printed to the post window
-
                                 <p>
-                                <img src="assets/sentire_software.jpeg" class="img-thumbnail" alt="Responsive image">
+                                    <img src="assets/sentire_software.jpeg" class="img-thumbnail"
+                                        alt="Responsive image">
+                                </p>
+
+                                <div class="alert alert-success" role="alert">
+                                    <i class='fa fa-thumbs-up'></i>
+                                    Congratulations, you are ready to setup the hardware now...
+                                </div>
+
+                            </div>
+
+                            <div class="alert alert-secondary" role="alert" style="font-size: larger;">
+                                <p>Sentire LE is open source and published under the GPL-3.0 license. If you want to reuse or modify please respect the GPL-3.0 licensing. If you want to contribute to the public code repository check out the README on github.
                                 </p>
                             </div>
                         </div>
-                        
-
-
-                    
-
                     </div>
 
                 </div>
@@ -218,62 +255,105 @@
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Hardware Setup
+                            <i class="bi-speaker" style="padding-right: 1rem"></i>Hardware Setup
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until
-                            the collapse plugin adds the appropriate classes that we use to style each element. These
-                            classes control the overall appearance, as well as the showing and hiding via CSS
-                            transitions. You can modify any of this with custom CSS or overriding our default variables.
-                            It's also worth noting that just about any HTML can go within the
-                            <code>.accordion-body</code>, though the transition does limit overflow.
+                            <div class="alert alert-secondary" role="alert">
+                                For a minimal sentire setup you need two instrument cables an audio interface with at
+                                least three output channels and one input channel with pre-amplification (MIC input)
+
+                            </div>
+
+                            <h3>Cables</h3>
+
+                            You can use any (audio) cable as a basis, but we recommend to use TRS Cables (standard
+                            instrument cable with Jack connectors).
+
+
+                            <div class="row">
+                                <div class="card text-center" style="width: 18rem;">
+                                    <img src="assets/sentire_cable.jpeg" class="card-img-top"
+                                        style="height:15rem; width:auto;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Professional Solution</h5>
+                                        <p class="card-text">
+                                            We use thin instrument cables with a TRS connector on the one side and a
+                                            conductive wristband (ESD Wristband) fixed to the other side.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-center" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <i class="bi-tools" style='font-size:10rem'></i>
+                                        <h5 class="card-title">DIY Solution</h5>
+                                        Take an old instrument cable with Jack connectors (TRS). Optionally cut one end.
+                                        You can attach anything that conducts to the "hot" wire of the cable.
+                                        <p class="card-text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Connections to the audio interface</h3>
+
+                            <p>Connect one cable to the first mic input (channel 1) of your audio interface, the other
+                                to the first line output (channel 1). Connect your speaker or sound system to line out
+                                channels 3 and 4.
+                            </p>
+
+                            <div class="alert alert-warning" role="alert">
+                                <i class='fa fa-info' style="padding-right:1rem"></i>
+                                If you want to use another channel configuration, you need to change the configuration
+                                of the sentire software (see next section).
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Using Sentire
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                            collapse plugin adds the appropriate classes that we use to style each element. These
-                            classes control the overall appearance, as well as the showing and hiding via CSS
-                            transitions. You can modify any of this with custom CSS or overriding our default variables.
-                            It's also worth noting that just about any HTML can go within the
-                            <code>.accordion-body</code>, though the transition does limit overflow.
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <i class="bi-mouse2" style="padding-right: 1rem"></i>
+                                Using Sentire
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                the
+                                collapse plugin adds the appropriate classes that we use to style each element. These
+                                classes control the overall appearance, as well as the showing and hiding via CSS
+                                transitions. You can modify any of this with custom CSS or overriding our default
+                                variables.
+                                It's also worth noting that just about any HTML can go within the
+                                <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
-        <!-- Footer-->
-        <div id="footer"></div>
+    <!-- Footer-->
+    <div id="footer"></div>
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script 
-            src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-        <script src="js/scripts.js"></script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!--script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script-->
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
