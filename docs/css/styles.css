@@ -618,7 +618,6 @@ progress {
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
-  max-width: 20%;
   height: auto;
 }
 
@@ -685,7 +684,7 @@ progress {
   margin-left: calc(-0.5 * var(--bs-gutter-x));
 }
 .row > * {
-  flex-shrink: 0;
+  /*flex-shrink: 0;*/
   width: 100%;
   max-width: 100%;
   padding-right: calc(var(--bs-gutter-x) * 0.5);
@@ -4724,6 +4723,7 @@ textarea.form-control-lg {
     transition: none;
   }
 }
+
 .accordion-button:hover {
   z-index: 2;
 }

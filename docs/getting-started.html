@@ -50,7 +50,7 @@
         </div>
 
         <!-- Disclaimer -->
-        <div class="alert alert-secondary" role="alert" style="font-size: larger;">
+        <div class="alert alert-secondary fs-5" role="alert">
             <p>Disclaimer: feel free to use these instructions and the sentire le software for your research, art
                 project or just for fun. If you do so, please cite the following paper in every publication (print or
                 digital) that references your work:
@@ -66,7 +66,8 @@
                         Technology for the Sonification Of Proximity and Touch in Closed-Loop Auditory Interaction.
                         Proceedings of the 19th Sound and Music Computing Conference, 441–448.
                         https://doi.org/10.5281/zenodo.6573488</p>
-                    <a href="https://doi.org/10.5281/zenodo.6573488" target="_blank" class="btn btn-primary">Publication</a>
+                    <a href="https://doi.org/10.5281/zenodo.6573488" target="_blank"
+                        class="btn btn-primary">Publication</a>
                 </div>
             </div>
         </div>
@@ -85,168 +86,171 @@
                     data-bs-parent="#accordionExample">
                     <!-- Accordion Body-->
                     <div class="accordion-body">
-                        <div class="d-grid gap-3">
-                            <h5>The following steps will guide you through the installation of sentire.</h5>
+                        <h5>The following steps will guide you through the installation of sentire.</h5>
+                        <div class="alert alert-primary" role="alert" style="width:auto">
+                            You will need a working version of <a href="https://supercollider.github.io"
+                                class="alert-link">SuperCollider</a>. If you have not installed it yet, please
+                            follow the instructions on the SuperCollider page.
+                        </div>
+
+                        <!--Step 1: Download-->
+                        <div class="p-2 mb-2 bg-light border">
+                            <h3>Step 1: Download Sentire LE</h3>
+
+                            <div class="d-grid gap-1">
+
+                                <p>Once you have successfully installed <code>SuperCollider</code>, you can either
+                                    clone the sentire repository or download the latest release (TODO: add link) and
+                                    unzip it on your computer:</p>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="card text-center" style="width: auto;">
+                                    <div class="card-body">
+
+                                        <i class='fa fa-github' style='font-size:50px; margin: 1rem'></i>
+                                        <h5 class="card-title">Clone repository</h5>
+                                        <p class="card-text">
+                                            <Code>git clone https://github.com/audiophil-dev/sentire_le.git</Code>
+                                            <button type="button" class="btn btn-default btn-copy js-tooltip js-copy"
+                                                data-toggle="tooltip" data-placement="bottom"
+                                                data-copy="git clone https://github.com/audiophil-dev/sentire_le.git"
+                                                title="Copy to clipboard">
+                                                <!-- icon from google's material design library -->
+                                                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24"
+                                                    height="24" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
+                                                </svg>
+                                            </button>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-center" style="width: auto;">
+                                    <div class="card-body">
+                                        <i class='fa fa-download' style='font-size:50px; margin: 1rem'></i>
+
+                                        <h5 class="card-title">Download Zip Package</h5>
+
+                                        <p class="card-text">
+                                            <button type="button" class="btn btn-primary">Download</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            In the following steps replace <code>$yourSentireDirectory</code> with your local (just
+                            downloaded) sentire directory
+
+
+                        </div>
+                        <div class="p-2 mb-2 bg-light border">
+                            <h3>Step 2: Copy Extensions</h3>
+
+                            First you need to copy the folder <code>SentireExtensions</code> from
+                            <code>$yourSentireDirectory</code> to the SuperCollider extensions folder:
+
+                            <div class="row">
+                                <div class="card text-center" style="width: auto;">
+                                    <div class="card-body">
+                                        <i class='fa fa-apple' style='font-size:50px; margin: 1rem'></i>
+                                        <h5 class="card-title">Mac</h5>
+                                        <p class="card-text">
+                                            <Code>~/Library/Application\ Support/SuperCollider/Extensions</Code>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-center" style="width: auto;">
+                                    <div class="card-body">
+                                        <i class='fa fa-linux' style='font-size:50px; margin: 1rem'></i>
+                                        <h5 class="card-title">Linux</h5>
+                                        <p class="card-text">
+                                            <Code>~/Library/Application\ Support/SuperCollider/Extensions</Code>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--Step 3-->
+                        <div class="p-2 mb-2 bg-light border">
+                            <h3>Step 3: Recompile SuperCollider Class Library</h3>
+
+                            <div class="row">
+                                <div class="card text-center" style="width: auto;">
+                                    <div class="card-body">
+                                        <i class='fa fa-apple' style='font-size:50px; margin: 1rem'></i>
+                                        <h5 class="card-title">Mac</h5>
+                                        <p class="card-text">
+                                            <kbd>Cmd+Shift+L</kbd>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-center" style="width: auto;">
+                                    <div class="card-body">
+                                        <i class='fa fa-linux' style='font-size:50px; margin: 1rem'></i>
+                                        <h5 class="card-title">Linux</h5>
+                                        <p class="card-text">
+                                            <kbd>Ctrl+Shift+L</kbd>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>
+                                Use the shortcuts or in the SuperCollider IDE:
+                                <span class="badge bg-secondary" style="white-space: normal;">Language->Recompile Class Library</span>
+                            </p>
+
                             <div class="alert alert-primary" role="alert">
-                                You will need a working version of <a href="https://supercollider.github.io"
-                                    class="alert-link">SuperCollider</a>. If you have not installed it yet, please
-                                follow the instructions on the SuperCollider page.
+                                The Class Library should compile without any errors!
                             </div>
+                        </div>
 
-                            <!--Step 1: Download-->
-                            <div class="p-2 bg-light border">
-                                <h3>Step 1: Download Sentire LE</h3>
+                        <!--Step 4-->
+                        <div class="p-2 mb-2 bg-light border">
+                            <h3>Step 4: Install JITLibExtensions</h3>
 
-                                <div class="d-grid gap-1">
+                            Sentire needs <i>JITLibExtensions</i>. In order to install it from within SuperCollider,
+                            execute:
 
-                                    <p>Once you have successfully installed <code>SuperCollider</code>, you can either
-                                        clone the sentire repository or download the latest release (TODO: add link) and
-                                        unzip it on your computer:</p>
+                            <pre><code>Quarks.gui();</code></pre>
 
-                                </div>
+                            and install the JITLibExtensions
 
-                                <div class="row">
-                                    <div class="card text-center" style="width: auto;">
-                                        <div class="card-body">
+                        </div>
 
-                                            <i class='fa fa-github' style='font-size:50px; margin: 1rem'></i>
-                                            <h5 class="card-title">Clone repository</h5>
-                                            <p class="card-text">
-                                                <Code>git clone https://github.com/audiophil-dev/sentire_le.git</Code>
-                                                <button type="button"
-                                                    class="btn btn-default btn-copy js-tooltip js-copy"
-                                                    data-toggle="tooltip" data-placement="bottom"
-                                                    data-copy="git clone https://github.com/audiophil-dev/sentire_le.git"
-                                                    title="Copy to clipboard">
-                                                    <!-- icon from google's material design library -->
-                                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                                        width="24" height="24" viewBox="0 0 24 24">
-                                                        <path
-                                                            d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
-                                                    </svg>
-                                                </button>
-                                            </p>
-                                        </div>
-                                    </div>
+                        <!--Step 5-->
+                        <div class="p-2 mb-2 bg-light border">
+                            <h3>Step 5: Start Sentire</h3>
+                            <p>
+                                Open <span class="badge bg-primary">main.scd</span> in
+                                <code>$yourSentireDirectory</code> and execute the whole code inside the brackets.
+                            </p>
 
-                                    <div class="card text-center" style="width: auto;">
-                                        <div class="card-body">
-                                            <i class='fa fa-download' style='font-size:50px; margin: 1rem'></i>
-
-                                            <h5 class="card-title">Download Zip Package</h5>
-
-                                            <p class="card-text">
-                                                <button type="button" class="btn btn-primary">Download</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                In the following steps replace <code>$yourSentireDirectory</code> with your local (just
-                                downloaded) sentire directory
-
-
-                            </div>
-                            <div class="p-2 bg-light border">
-                                <h3>Step 2: Copy Extensions</h3>
-
-                                First you need to copy the folder <code>SentireExtensions</code> from
-                                <code>$yourSentireDirectory</code> to the SuperCollider extensions folder:
-
-                                <div class="row">
-                                    <div class="card text-center" style="width: auto;">
-                                        <div class="card-body">
-                                            <i class='fa fa-apple' style='font-size:50px; margin: 1rem'></i>
-                                            <h5 class="card-title">Mac</h5>
-                                            <p class="card-text">
-                                                <Code>~/Library/Application\ Support/SuperCollider/Extensions</Code>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card text-center" style="width: auto;">
-                                        <div class="card-body">
-                                            <i class='fa fa-linux' style='font-size:50px; margin: 1rem'></i>
-                                            <h5 class="card-title">Linux</h5>
-                                            <p class="card-text">
-                                                <Code>~/Library/Application\ Support/SuperCollider/Extensions</Code>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!--Step 3-->
-                            <div class="p-2 bg-light border">
-                                <h3>Step 3: Recompile SuperCollider Class Library</h3>
-
-                                <div class="row">
-                                    <div class="card text-center" style="width: auto;">
-                                        <div class="card-body">
-                                            <i class='fa fa-apple' style='font-size:50px; margin: 1rem'></i>
-                                            <h5 class="card-title">Mac</h5>
-                                            <p class="card-text">
-                                                <kbd>Cmd+Shift+L</kbd>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card text-center" style="width: auto;">
-                                        <div class="card-body">
-                                            <i class='fa fa-linux' style='font-size:50px; margin: 1rem'></i>
-                                            <h5 class="card-title">Linux</h5>
-                                            <p class="card-text">
-                                                <kbd>Ctrl+Shift+L</kbd>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p>
-                                    Use the shortcuts or in the SuperCollider IDE: <span
-                                        class="badge bg-secondary">Language->Recompile Class Library</span>
-                                </p>
-
-                                <div class="alert alert-primary" role="alert">
-                                    The Class Library should compile without any errors!
-                                </div>
-                            </div>
-
-                            <!--Step 4-->
-                            <div class="p-2 bg-light border">
-                                <h3>Step 4: Install JITLibExtensions</h3>
-
-                                Sentire needs <i>JITLibExtensions</i>. In order to install it from within SuperCollider,
-                                execute:
-
-                                <pre><code>Quarks.gui();</code></pre>
-
-                                and install the JITLibExtensions
-
-                            </div>
-
-                            <!--Step 5-->
-                            <div class="p-2 bg-light border">
-                                <h3>Step 5: Start Sentire</h3>
-                                <p>
-                                    Open <span class="badge bg-primary">main.scd</span> in
-                                    <code>$yourSentireDirectory</code> and execute the whole code inside the brackets.
-                                </p>
+                            <p>
                                 A Window named "Sentire" should open, and no errors should be printed to the post window
-                                <p>
-                                    <img src="assets/sentire_software.jpeg" class="img-thumbnail"
-                                        alt="Responsive image">
-                                </p>
+                            </p>
 
-                                <div class="alert alert-success" role="alert">
-                                    <i class='fa fa-thumbs-up'></i>
-                                    Congratulations, you are ready to setup the hardware now...
-                                </div>
+                            <p>
+                                <img src="assets/sentire_software.jpeg" class="img-fluid" alt="Responsive image"
+                                    style="width: 20rem;">
+                            </p>
 
+                            <div class="alert alert-success" role="alert">
+                                <i class='fa fa-thumbs-up'></i>
+                                Congratulations, you are ready to setup the hardware now...
                             </div>
 
-                            <div class="alert alert-secondary" role="alert" style="font-size: larger;">
-                                <p>Sentire LE is open source and published under the GPL-3.0 license. If you want to reuse or modify please respect the GPL-3.0 licensing. If you want to contribute to the public code repository check out the README on github.
-                                </p>
-                            </div>
+                        </div>
+
+                        <div class="alert alert-secondary fs-5" role="alert">
+                            <p>Sentire LE is open source and published under the GPL-3.0 license. If you want to reuse
+                                or modify please respect the GPL-3.0 licensing. If you want to contribute to the public
+                                code repository check out the README on github.
+                            </p>
                         </div>
                     </div>
 
@@ -274,39 +278,48 @@
 
 
                             <div class="row">
-                                <div class="card text-center" style="width: 18rem;">
-                                    <img src="assets/sentire_cable.jpeg" class="card-img-top"
-                                        style="height:15rem; width:auto;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Professional Solution</h5>
-                                        <p class="card-text">
-                                            We use thin instrument cables with a TRS connector on the one side and a
-                                            conductive wristband (ESD Wristband) fixed to the other side.
-                                        </p>
+                                <div class="col">
+                                    <div class="card text-center" style="max-width: 15rem;">
+                                        <img src="assets/sentire_cable.jpeg" class="card-img"
+                                            style="height:auto; max-width: 15rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Professional Solution</h5>
+                                            <p class="card-text">
+                                                We use thin instrument cables with a TRS connector on the one side and a
+                                                conductive wristband (ESD Wristband) fixed to the other side.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="card text-center" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <i class="bi-tools" style='font-size:10rem'></i>
-                                        <h5 class="card-title">DIY Solution</h5>
-                                        Take an old instrument cable with Jack connectors (TRS). Optionally cut one end.
-                                        You can attach anything that conducts to the "hot" wire of the cable.
-                                        <p class="card-text">
+                                <div class="col">
+                                    <div class="card text-center" style="max-width: 15rem;">
+                                        <div class="card-body">
+                                            <i class="bi-tools" style='font-size:7rem'></i>
+                                            <h5 class="card-title">DIY Solution</h5>
+                                            Take an old instrument cable with Jack connectors (TRS). Optionally cut one
+                                            end.
+                                            You can attach anything that conducts to the "hot" wire of the cable.
+                                            <p class="card-text">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
+
                             <h3>Connections to the audio interface</h3>
 
-                            <p>Connect one cable to the first mic input (channel 1) of your audio interface, the other
-                                to the first line output (channel 1). Connect your speaker or sound system to line out
+                            <p>Connect one cable to the first mic input (channel 1) of your audio interface, the
+                                other
+                                to the first line output (channel 1). Connect your speaker or sound system to line
+                                out
                                 channels 3 and 4.
                             </p>
 
                             <div class="alert alert-warning" role="alert">
                                 <i class='fa fa-info' style="padding-right:1rem"></i>
-                                If you want to use another channel configuration, you need to change the configuration
+                                If you want to use another channel configuration, you need to change the
+                                configuration
                                 of the sentire software (see next section).
                             </div>
                         </div>
@@ -322,9 +335,11 @@
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                                until
                                 the
-                                collapse plugin adds the appropriate classes that we use to style each element. These
+                                collapse plugin adds the appropriate classes that we use to style each element.
+                                These
                                 classes control the overall appearance, as well as the showing and hiding via CSS
                                 transitions. You can modify any of this with custom CSS or overriding our default
                                 variables.
