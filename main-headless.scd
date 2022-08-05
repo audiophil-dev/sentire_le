@@ -1,4 +1,4 @@
-﻿/*
+/*
  © Copyright 2019-2022 Pascal Staudt, Bruno Gola, Marcello Lussana
 
 This program is free software: you can redistribute it and/or modify
@@ -35,13 +35,16 @@ if (g.controller.notNil) {
 	s.freeAll;
 };
 
-
 g.config = configFile.load.value();
+
 
 if (localConfigFile.pathMatch.size > 0) {
 	var localConfig = localConfigFile.load.value();
 	"Overriding config with local_config.scd".warn;
 	g.config.putAll(localConfig);
+
+} {
+	("Loading config: " + configFile).inform;
 };
 
 
@@ -58,11 +61,13 @@ if (File.exists(sentireFolder +/+ ".git")) {
 	} {
 		g.config.version = "NotFound"
 	};
+	("Running Sentire Version" + g.config.version).inform;
 };
 
 
 g.config.sentireFolder = sentireFolder;
 g.config.loadServerOptions(s);
+
 
 s.waitForBoot({
 	// This is necessary because the timeout parameter of s.waitForBoot is not working in SC 3.11
@@ -74,6 +79,7 @@ s.waitForBoot({
 		//(sentireFolder +/+ "Sounds/bowls.scd").load();
 	};
 });
+
 
 fork {
 	var breakBoot = false;
@@ -88,4 +94,5 @@ fork {
 
 // Returns the g variable for testing
 g;
+
 )

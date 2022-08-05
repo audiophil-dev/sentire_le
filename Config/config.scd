@@ -1,4 +1,4 @@
-﻿/*
+/*
  © Copyright 2019-2022 Pascal Staudt, Bruno Gola, Marcello Lussana
 
 This program is free software: you can redistribute it and/or modify
@@ -18,6 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 {(
 	pyOscVideoAddr: "127.0.0.1",
 	pyOscVideoPort: 57220,
+	pyOscVideoPlayerPort: 57221,
+
+	enableOSCInterface: false,
 
 	// pre-selection of the recording checkboxes
 	recording: (
@@ -30,13 +33,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	soundEnvironments: "Sounds",
 
-	thresholdTouch: 0.98,
+	thresholdTouch: 1.02,
+
+	rangeScale: 0.7,
 
 	soundEnvironment: \noSound,
 
 	serverMemSize: 8192*2,
 
-	currentAudioInterface: \p68c,
+	currentAudioInterface: \u192,
 
 	proximitySensor: \wired,
 
@@ -59,7 +64,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 			blockSize: 64,
 			hardwareBufferSize: 128,
-			numWireBufs: 1024,
+			numWireBufs: 4096,
 			sampleRate: 48000,
 			serverLatency: 0.4
 		),
@@ -68,8 +73,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			// gain setting is set at about 2pm
 			thresholdLow: 0.00023,
 			thresholdHigh: 0.05,
-			signalSplitValue: 0.05,
-			signalSplitProportion: 1,
 
 			numInputs: 2,
 			numOutputs: 4,
@@ -82,10 +85,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 			blockSize: 64,
 			hardwareBufferSize: 128,
-			numWireBufs: 1024,
+			numWireBufs: 4096,
 			sampleRate: 48000,
 			serverLatency: 0.4
 		),
+
+		u192_wireless: (
+			thresholdLow: 0.00015572052507196,
+			thresholdHigh: 0.050718050450087,
+
+			numInputs: 4,
+			numOutputs: 4,
+
+			audioInputChannels: [2,3],
+			audioOutputChannels: [0,1],
+
+			sensorInputChannels: [0],
+			sensorOutputChannel: 0,
+
+			blockSize: 32,
+			hardwareBufferSize: 128,
+			numWireBufs: 4096,
+			sampleRate: 48000,
+            serverLatency: 0.4
+		)
 	),
 
 	audioInterface: { arg self;
