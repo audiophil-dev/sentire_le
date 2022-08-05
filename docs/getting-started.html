@@ -10,20 +10,20 @@
 
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-</head>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/styles.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
 
-<!-- Font Awesome -->
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <!--link href="//netdna.bootstrapcdn.com/font-awesome/5.13.0/css/font-awesome.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
 <body>
     <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigationBar">
+        <div class=" container px-5">
             <a class="navbar-brand" href="#!">Sentire LE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <!-- Accordion-->
+        <!-- #Accordion -->
         <div class="accordion" id="accordionInstruction">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="Installation">
@@ -168,7 +168,7 @@
                                         <i class='fa fa-linux' style='font-size:50px; margin: 1rem'></i>
                                         <h5 class="card-title">Linux</h5>
                                         <p class="card-text">
-                                            <Code>~/Library/Application\ Support/SuperCollider/Extensions</Code>
+                                            <Code>~/.local/share/SuperCollider/Extensions</Code>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,8 @@
 
                             <p>
                                 Use the shortcuts or in the SuperCollider IDE:
-                                <span class="badge bg-secondary" style="white-space: normal;">Language->Recompile Class Library</span>
+                                <span class="badge bg-secondary" style="white-space: normal;">Language->Recompile Class
+                                    Library</span>
                             </p>
 
                             <div class="alert alert-primary" role="alert">
@@ -225,6 +226,17 @@
                         <!--Step 5-->
                         <div class="p-2 mb-2 bg-light border">
                             <h3>Step 5: Start Sentire</h3>
+
+                            <div class="alert alert-danger" role="alert">
+                                <i class='fa fa-warning' style="padding-right:0.5rem"></i>
+                                Before you start the sentire software, make sure to turn down the volume of your
+                                speakers/headphones and any other active monitoring. Depending on the chosen channel
+                                configuration you may hear a very load high pitched tone. This is intended since the
+                                standard config uses the first channel of your sound card for the sensor signal. Before
+                                turning up the volume, make sure to only monitor channels 3 and 4. If you want to use
+                                another channel configuration read the <i>Config</i> section under <i>Using Sentire</i>.
+                            </div>
+
                             <p>
                                 Open <span class="badge bg-primary">main.scd</span> in
                                 <code>$yourSentireDirectory</code> and execute the whole code inside the brackets.
@@ -297,10 +309,11 @@
                                         <div class="card-body">
                                             <i class="bi-tools" style='font-size:7rem'></i>
                                             <h5 class="card-title">DIY Solution</h5>
-                                            Take an old instrument cable with Jack connectors (TRS). Optionally cut one
-                                            end.
-                                            You can attach anything that conducts to the "hot" wire of the cable.
-                                            <p class="card-text">
+
+                                            <p class="card-text"> Take an old instrument cable with Jack connectors
+                                                (TRS). Optionally cut one end. You can attach anything that conducts to
+                                                the "hot" wire of the cable.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -325,32 +338,208 @@
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
+                        <h2 class="accordion-header" id="usingSentire">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 <i class="bi-mouse2" style="padding-right: 1rem"></i>
                                 Using Sentire
                             </button>
                         </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="hardwareSetup"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default,
-                                until
-                                the
-                                collapse plugin adds the appropriate classes that we use to style each element.
-                                These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default
-                                variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                <p>Once you have successfully installed sentire LE and you have setup the hardware (see
+                                    sections aboce), you are ready to try the interactive proximity sensing.</p>
+                                <h3>Choosing a Sound Environment</h3>
+
+                                <p>We call the set of parameters that defines the sonic quality of the interaction a
+                                    sound environment (SE) [1]. A SE results from predefined artistic decisions
+                                    concerning sound design and algorithmic composition combined with a specific
+                                    parameter mapping.
+                                </p>
+
+                                <p>Sentire LE comes with two pre-defined SEs: <i>testSin</i> and <i>softSin</i></p>
+
+                                <dl class="row">
+                                    <dt class="col-sm-3">testSin</dt>
+                                    <dd class="col-sm-9">A very simple (and yet unpleasent sounding) SE made for testing
+                                        and demonstration purposes. Basically a simple sine wave with its frequency
+                                        mapped to proximity </dd>
+
+                                    <dt class="col-sm-3">softSin</dt>
+                                    <dd class="col-sm-9">
+                                        <p>A SE based on a series of harmonic sine frequencies. The composition of the
+                                            different fundamental frequencies is mapped to proximity. Touch events
+                                            trigger change the root frequency. Although this SE still sounds unpleasent
+                                            to many persons, it is a very good example demonstrating the felt agency
+                                            when using sentire.</p>
+                                    </dd>
+                                </dl>
+
+
+                                <div class="card text" id="switchingSEs">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="display: flex; align-items: center"><i
+                                                class="bi-music-note-beamed fs-3 pe-2"></i>
+                                            Switching between sound environments</h5>
+
+                                        <p class="card-text">If you want to change the current sound environment, just
+                                            click on the name of the SE you want to select. If you want to disable the
+                                            sound, select
+                                            <i>noSound</i>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p>If you want to program your own SE or modify an existing SE, read section
+                                    <a href="TODO:addlink" target="_blank">Sonic Interaction Design with Sentire</a>
+                                </p>
+
+                                <div class="card" style="width: auto;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"></h5>
+                                        <p class="card-text h-6 small">
+                                            [1] M. Rizzonelli, J. H. Kim, P. Staudt, and M. Lussana, Fostering Social
+                                            Interaction through Sound Feedback: Sentire, Organised Sound, vol. 28, no.
+                                            01, pp. 317-326, 2022. https://doi.org/10.1017/S1355771822000024<a
+                                                href="https://doi.org/10.1017/S1355771822000024" target="_blank"
+                                                class="btn-dark btn-sm ms-2">Link</a></p>
+                                    </div>
+                                </div>
+
+                                <h3>Master Gain and Effects</h3>
+
+                                <p>You can adjust the volume of the SE with the Master Slider on the right. The meter
+                                    next
+                                    to the slider shows the output level. If you want to adjust the Audio Effects on the
+                                    master output channel, click <i>Master Effects</i>. A new window will open, with
+                                    settings for the pre-defined master-effects.
+                                </p>
+
+                                <div class=row id="volumeAndFx">
+                                    <!--div class="col"-->
+                                    <div class="card text" id="changingVolume" style="width: auto;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="display: flex; align-items: center"><i
+                                                    class="bi-volume-up-fill fs-3 pe-2"></i>
+                                                Changing the Volume</h5>
+                                            Drag the <i>Master Gain</i> slider on the right
+                                        </div>
+                                    </div>
+                                    <!--/div-->
+
+                                    <!--div class="col"-->
+                                    <div class="card text" id="masterEffects" style="width: auto;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="display: flex; align-items: center"><i
+                                                    class="bi-sliders fs-3 pe-2"></i>
+                                                Effect Settings</h5>
+                                            Click <i>Master effects</i> to adjust the effect settings on the master
+                                            channel
+                                            <p class="card-text">
+                                        </div>
+                                    </div>
+                                    <!--/div-->
+                                </div>
+
+                                <h3>Sensor Range</h3>
+
+                                <p>
+                                    Using the <i>Range Slider</i>, will change the maximum range of the proximity
+                                    sensing. The physical range of the sensor system depends on various factors and is
+                                    mapped to a normalised range between 0 and 1. Setting the range slider to 1 will
+                                    give you the maximum available range. With a normal consumer grade sound card you
+                                    can reach a maximum range of about 4 metres. If the maximum range is to small, try
+                                    increasing the pre-amplification of the input channel. Make sure that the input does
+                                    not clip. If you experience undefined behavior in the far range, turn down the
+                                    pre-amplification a bit.
+                                </p>
+
+                                <div class=row id="range">
+                                    <!--div class="col"-->
+                                    <div class="card text" id="rangeSlider" style="width: auto;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="display: flex; align-items: center">
+                                                <i class='fa fa-people-arrows fs-3 pe-2'></i> Adjusting the Range
+                                            </h5>
+                                            Use the <i>Range Slider</i> to adjust the maximum interactive space
+                                        </div>
+                                    </div>
+                                    <!--/div-->
+
+                                    <!--div class="col"-->
+                                    <div class="card text" id="pre-amplification" style="width: auto; max-width: 50%;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="display: flex; align-items: center">
+                                                <i class='fa fa-circle-notch fs-3 pe-2'></i> Set the Pre-amplification
+                                            </h5>
+                                            Increasing the pre-amplification of your audio input can increase the
+                                            maximum range
+                                            <p class="card-text">
+                                        </div>
+                                    </div>
+                                    <!--/div-->
+                                </div>
+
+                                <h3>Starting to interact</h3>
+
+                                <p>
+                                    If you have selected a sound environment before, click <i>noSound</i> to test the
+                                    sensor input before you start the interaction. Each interaction participant wears
+                                    one fo the bracelets (if you use the official sentire wires) or touch the end of you
+                                    DIY sensor cables. You should see a changing signal in the proximity now. You can
+                                    adjust the range before starting the interaction. The pre-defined sentire sound
+                                    environments start with silence at the maximum distance. This is the point just
+                                    before the proximity graph starts showing a signal.
+                                </p>
+
+                                <div class=row id="range">
+                                    <!--div class="col"-->
+                                    <div class="card text" id="rangeSlider" style="width: auto;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="display: flex; align-items: center">
+                                                <i class='fa fa-circle-info fs-3 pe-2'></i> Start in the far range
+                                            </h5>
+                                            Usually it's best to start the interaction in the "far" range, with no
+                                            sound, and to slowly approch each other.
+                                        </div>
+                                    </div>
+                                    <!--/div-->
+                                </div>
+
+                                <div class="alert alert-success" role="alert">
+                                    <i class='fa fa-thumbs-up'></i>
+                                    Congratulations, you know now how to use sentire and are ready interact.
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <i class="fa fa-circle-question" style="padding-right: 1rem"></i>Troubleshooting
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="alert alert-primary" role="alert">
+                                <i class="fa fa-person-digging" style="padding-right: 1rem"></i>
+                                This section is still under construction. If you face any problems using the sentire software please post an issue on the <a href="https://github.com/audiophil-dev/sentire_le/issues"  target = "_blank">sentire github page</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+        <!-- endAccordion -->
+
     </div>
 
     <!-- Footer-->

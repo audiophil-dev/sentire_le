@@ -37,5 +37,4 @@ s.waitForBoot({
 });
 
 "...Finished loading main.scd";
-"---".inform;
 )
