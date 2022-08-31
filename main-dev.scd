@@ -1,4 +1,4 @@
-﻿/*
+/*
  © Copyright 2019-2022 Pascal Staudt, Bruno Gola, Marcello Lussana
 
 This program is free software: you can redistribute it and/or modify
@@ -28,17 +28,6 @@ g.controller.soundEnvironmentSelector.selected = \noSound
 
 // *** Testing ***
 
-(
-// Set the right thresholds
-var temp = 0.056290987432;
-g.controller.signalFlow.proximityDetection.thresholdLow = 0.00041675037209643;
-g.controller.signalFlow.proximityDetection.thresholdHigh = temp;
-g.controller.signalFlow.proximityDetection.thresholdTouch = 0.98;
-g.controller.signalFlow.proximityDetection.signalSplitProportion = 400/400;
-g.controller.signalFlow.proximityDetection.signalSplitValue = temp;
-)
-
-g.controller.reset;
 
 // set the sensor output
 g.controller.signalFlow.rawSignal.outputChannel = 2;
